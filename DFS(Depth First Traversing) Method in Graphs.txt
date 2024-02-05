@@ -1,0 +1,47 @@
+DFS(Depth First Traversing) Method in Graphs:
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    for x in graph:
+        print(x,":",graph[x])
+def addEdge(node1,node2):
+    if node1 not in graph:
+        print("node1 is not available")
+    elif node2 not in graph:
+        print("node2 is not available")
+    else:
+        graph[node1].append(node2)
+def dfs(visited,graph,node):
+    if node not in visited:
+        print(node,end=" ")
+        visited.add(node)
+        for v in graph[node]:
+            dfs(visited,graph,v)
+
+graph={}
+visited=set()
+while True:
+    print()
+    print("1.Add Node\n2.Add Edge\n3.Show\n4.DFS\n5.Exit")
+    ch=int(input("Choice: "))
+    if ch==1:
+        x=input("Node: ")
+        addNode(x)
+    elif ch==2:
+        node1=input("Node1: ")
+        node2=input("Node2: ")
+        addEdge(node1,node2)
+    elif ch==3:
+        show()
+    elif ch==4:
+        node=input("Node:")
+        dfs(visited,graph,node)
+        print()
+    elif ch==5:
+        exit
+    else:
+        print("invalid choice")
